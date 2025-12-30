@@ -2,8 +2,26 @@ import 'package:app/constants/colors.dart';
 import 'package:app/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 
+class OnboardingStepData {
+  const OnboardingStepData({
+    required this.title,
+    required this.description,
+    required this.icon,
+  });
+  final String title;
+  final String description;
+  final IconData icon;
+}
+
 class OnboardingSteps extends StatefulWidget {
-  const OnboardingSteps({super.key});
+  const OnboardingSteps({
+    required this.steps,
+    required this.onComplete,
+    super.key,
+  });
+
+  final List<OnboardingStepData> steps;
+  final VoidCallback onComplete;
 
   @override
   State<OnboardingSteps> createState() => _OnboardingStepsState();
@@ -12,26 +30,13 @@ class OnboardingSteps extends StatefulWidget {
 class _OnboardingStepsState extends State<OnboardingSteps> {
   int _currentStep = 0;
 
-  final List<OnboardingStepData> _steps = const [
-    OnboardingStepData(
-      title: 'Добро пожаловать!',
-      description:
-          'Откройте для себя все возможности нашего приложения. Получите доступ к премиум функциям.',
-      icon: Icons.waving_hand,
-    ),
-    OnboardingStepData(
-      title: 'Начните использовать',
-      description:
-          'Выберите подписку и получите полный доступ ко всем функциям приложения.',
-      icon: Icons.rocket_launch,
-    ),
-  ];
-
   void _nextStep() {
-    if (_currentStep < _steps.length - 1) {
+    if (_currentStep < widget.steps.length - 1) {
       setState(() {
         _currentStep++;
       });
+    } else {
+      widget.onComplete();
     }
   }
 
@@ -45,9 +50,8 @@ class _OnboardingStepsState extends State<OnboardingSteps> {
 
   @override
   Widget build(BuildContext context) {
-    final step = _steps[_currentStep];
+    final step = widget.steps[_currentStep];
     final isFirstStep = _currentStep == 0;
-    final isLastStep = _currentStep == _steps.length - 1;
 
     return Padding(
       padding: const EdgeInsets.all(24.0),
@@ -88,7 +92,7 @@ class _OnboardingStepsState extends State<OnboardingSteps> {
                 const SizedBox.shrink(),
               Row(
                 children: List.generate(
-                  _steps.length,
+                  widget.steps.length,
                   (index) => Container(
                     margin: const EdgeInsets.symmetric(horizontal: 4),
                     width: 8,
@@ -105,11 +109,7 @@ class _OnboardingStepsState extends State<OnboardingSteps> {
                 ),
               ),
               AppButton(
-                onPressed: isLastStep
-                    ? () {
-                        Navigator.of(context).pop();
-                      }
-                    : _nextStep,
+                onPressed: _nextStep,
                 variant: AppButtonVariant.primary,
                 child: const Text('Продолжить'),
               ),
@@ -119,15 +119,4 @@ class _OnboardingStepsState extends State<OnboardingSteps> {
       ),
     );
   }
-}
-
-class OnboardingStepData {
-  const OnboardingStepData({
-    required this.title,
-    required this.description,
-    required this.icon,
-  });
-  final String title;
-  final String description;
-  final IconData icon;
 }
