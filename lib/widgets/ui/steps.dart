@@ -80,20 +80,24 @@ class _StepsState extends State<Steps> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (!isFirstStep)
-                FadeInAnimation(
-                  delay: const Duration(milliseconds: 100),
-                  child: Button(
-                    onPressed: _previousStep,
-                    variant: ButtonVariant.outline,
-                    child: const Text('Предыдущий'),
-                  ),
-                )
-              else
-                const SizedBox.shrink(),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: !isFirstStep
+                      ? FadeInAnimation(
+                          delay: const Duration(milliseconds: 100),
+                          child: Button(
+                            onPressed: _previousStep,
+                            variant: ButtonVariant.outline,
+                            child: const Text('Предыдущий'),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ),
+              ),
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: List.generate(
                   widget.steps.length,
                   (index) => Container(
@@ -111,12 +115,17 @@ class _StepsState extends State<Steps> {
                   ),
                 ),
               ),
-              FadeInAnimation(
-                delay: const Duration(milliseconds: 100),
-                child: Button(
-                  onPressed: _nextStep,
-                  variant: ButtonVariant.primary,
-                  child: const Text('Продолжить'),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: FadeInAnimation(
+                    delay: const Duration(milliseconds: 100),
+                    child: Button(
+                      onPressed: _nextStep,
+                      variant: ButtonVariant.primary,
+                      child: const Text('Продолжить'),
+                    ),
+                  ),
                 ),
               ),
             ],
