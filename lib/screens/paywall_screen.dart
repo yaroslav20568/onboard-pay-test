@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:app/constants/subscription_const.dart';
-import 'package:app/models/subscription.dart';
-import 'package:app/screens/home_screen.dart';
-import 'package:app/services/subscription_service.dart';
+import 'package:app/constants/index.dart';
+import 'package:app/models/index.dart';
+import 'package:app/screens/index.dart';
+import 'package:app/services/index.dart';
 import 'package:app/widgets/paywall/paywall_header.dart';
 import 'package:app/widgets/paywall/subscription_card.dart';
-import 'package:app/widgets/ui/button.dart';
+import 'package:app/widgets/ui/index.dart';
 import 'package:flutter/material.dart';
 
 class PaywallScreen extends StatefulWidget {

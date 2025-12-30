@@ -18,7 +18,7 @@ globs:
 
 ## Структура проекта
 
-- Используй простую структуру: `lib/screens/`, `lib/widgets/`, `lib/services/`, `lib/models/`
+- Используй простую структуру: `lib/screens/`, `lib/widgets/`, `lib/services/`, `lib/models/`, `lib/constants/`
 - Храни каждый экран в отдельном файле
 - Выноси переиспользуемые виджеты в `lib/widgets/`
 - Храни сервисы (например, для работы с SharedPreferences) в `lib/services/`
@@ -26,6 +26,7 @@ globs:
 - Организация виджетов в `lib/widgets/`:
   - Общие UI виджеты (переиспользуемые компоненты) - в папку `ui/`
   - Виджеты, относящиеся к конкретному экрану - в папку с названием экрана (например, `home/`, `onboarding/`)
+- **Создавай `index.dart` файл в каждой папке** для организации публичного API модуля
 
 ## Цвета
 
@@ -116,11 +117,46 @@ globs:
 - Используй `SCREAMING_CAPS` для констант
 - Используй префикс `_` для приватных членов
 
-## Импорты
+## Публичный API и импорты
 
-- Импорты автоматически сортируются при сохранении
-- Порядок: dart, flutter, пакеты, относительные
-- Используй относительные импорты для файлов в том же пакете
+### Организация публичного API через index.dart
+
+- **Обязательно создавай `index.dart` файл в каждой папке внутри `lib/`** (constants, models, screens, services, widgets и их подпапки)
+- `index.dart` должен экспортировать все публичные классы, функции и константы из модуля
+- Используй `export 'filename.dart';` для каждого файла в модуле
+- **НЕ создавай `index.dart` в корне `lib/`** - это не является стандартной практикой в Flutter
+
+### Правила импортов
+
+- **Всегда используй импорты через `index.dart`** для доступа к публичному API модуля
+- Формат: `import 'package:app/module_name/index.dart';`
+- Примеры:
+  - `import 'package:app/constants/index.dart';` вместо `import 'package:app/constants/colors_const.dart';`
+  - `import 'package:app/models/index.dart';` вместо `import 'package:app/models/subscription.dart';`
+  - `import 'package:app/screens/index.dart';` вместо `import 'package:app/screens/home_screen.dart';`
+  - `import 'package:app/services/index.dart';` вместо `import 'package:app/services/subscription_service.dart';`
+  - `import 'package:app/widgets/ui/index.dart';` вместо `import 'package:app/widgets/ui/button.dart';`
+
+### Исключения из правил импортов
+
+- Если есть конфликт имен (например, два класса с одинаковым именем в разных модулях), используй прямые импорты для избежания конфликта
+- Пример: если `SubscriptionCard` существует и в `widgets/home/`, и в `widgets/paywall/`, используй прямые импорты для paywall версии
+
+### Структура index.dart файлов
+
+- В `lib/constants/index.dart`: экспортируй все файлы констант
+- В `lib/models/index.dart`: экспортируй все модели
+- В `lib/screens/index.dart`: экспортируй все экраны
+- В `lib/services/index.dart`: экспортируй все сервисы
+- В `lib/widgets/home/index.dart`: экспортируй все виджеты из home
+- В `lib/widgets/paywall/index.dart`: экспортируй все виджеты из paywall
+- В `lib/widgets/ui/index.dart`: экспортируй все UI виджеты
+- В `lib/widgets/index.dart`: экспортируй подпапки виджетов (home, paywall, ui), но учитывай конфликты имен
+
+### Автоматизация
+
+- При создании нового файла в модуле, автоматически добавляй его экспорт в соответствующий `index.dart`
+- При изменении импортов, всегда обновляй их на использование `index.dart` вместо прямых импортов файлов
 
 ## Что НЕ делать
 
