@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app/constants/subscription_const.dart';
 import 'package:app/models/subscription.dart';
 import 'package:app/screens/paywall_screen.dart';
 import 'package:app/services/subscription_service.dart';
@@ -34,8 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _subscription = Subscription(
         type: type,
-        price: type == SubscriptionType.month ? '299 ₽' : '1999 ₽',
-        discount: type == SubscriptionType.year ? 44 : 0,
+        price: SubscriptionConstants.getPrice(type),
+        discount: SubscriptionConstants.getDiscount(type),
       );
     });
   }
