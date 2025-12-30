@@ -101,8 +101,8 @@ class _OnboardingStepsState extends State<OnboardingSteps> {
                       shape: BoxShape.circle,
                       color: index == _currentStep
                           ? AppColors.primary
-                          : AppColors.primary.withOpacity(
-                              AppColors.inactiveOpacity,
+                          : AppColors.primary.withValues(
+                              alpha: AppColors.inactiveOpacity,
                             ),
                     ),
                   ),
