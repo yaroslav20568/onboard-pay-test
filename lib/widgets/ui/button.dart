@@ -1,7 +1,7 @@
 import 'package:app/constants/index.dart';
 import 'package:flutter/material.dart';
 
-enum ButtonVariant { primary, secondary, outline }
+enum ButtonVariant { primary, outline }
 
 class Button extends StatelessWidget {
   const Button({
@@ -19,8 +19,6 @@ class Button extends StatelessWidget {
     switch (variant) {
       case ButtonVariant.primary:
         return AppColors.primary;
-      case ButtonVariant.secondary:
-        return AppColors.secondary;
       case ButtonVariant.outline:
         return AppColors.transparent;
     }
@@ -29,7 +27,6 @@ class Button extends StatelessWidget {
   Color _getForegroundColor(BuildContext context) {
     switch (variant) {
       case ButtonVariant.primary:
-      case ButtonVariant.secondary:
         return AppColors.white;
       case ButtonVariant.outline:
         return AppColors.primary;
@@ -39,7 +36,6 @@ class Button extends StatelessWidget {
   Color? _getBorderColor(BuildContext context) {
     switch (variant) {
       case ButtonVariant.primary:
-      case ButtonVariant.secondary:
         return null;
       case ButtonVariant.outline:
         return AppColors.primary;
@@ -50,8 +46,6 @@ class Button extends StatelessWidget {
     switch (variant) {
       case ButtonVariant.primary:
         return AppColors.primary.withValues(alpha: AppColors.disabledOpacity);
-      case ButtonVariant.secondary:
-        return AppColors.secondary.withValues(alpha: AppColors.disabledOpacity);
       case ButtonVariant.outline:
         return AppColors.transparent;
     }
@@ -60,7 +54,6 @@ class Button extends StatelessWidget {
   Color _getDisabledForegroundColor(BuildContext context) {
     switch (variant) {
       case ButtonVariant.primary:
-      case ButtonVariant.secondary:
         return AppColors.white.withValues(alpha: AppColors.disabledOpacity);
       case ButtonVariant.outline:
         return AppColors.primary.withValues(alpha: AppColors.disabledOpacity);
@@ -90,6 +83,7 @@ class Button extends StatelessWidget {
             width: 2,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: child,
       );

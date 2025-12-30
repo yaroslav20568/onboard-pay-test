@@ -24,6 +24,7 @@ class Subscription {
     if (discount > 0) {
       return 'Скидка $discount%';
     }
+
     return '';
   }
 }

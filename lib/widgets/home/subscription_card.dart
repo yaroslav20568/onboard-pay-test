@@ -8,6 +8,7 @@ class SubscriptionCard extends StatelessWidget {
     required this.description,
     super.key,
   });
+
   final IconData icon;
   final String title;
   final String description;
