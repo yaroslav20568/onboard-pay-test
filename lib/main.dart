@@ -1,3 +1,4 @@
+import 'package:app/constants/colors_const.dart';
 import 'package:app/screens/home_screen.dart';
 import 'package:app/screens/onboarding_screen.dart';
 import 'package:app/services/subscription_service.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'OnboardPay',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         useMaterial3: true,
       ),
       home: const InitialScreen(),

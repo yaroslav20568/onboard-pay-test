@@ -49,9 +49,9 @@ class ActiveSubscriptionCard extends StatelessWidget {
                 children: [
                   Text(
                     'Тип подписки',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey.shade600,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: AppColors.grey600),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -67,9 +67,9 @@ class ActiveSubscriptionCard extends StatelessWidget {
                 children: [
                   Text(
                     'Стоимость',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey.shade600,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: AppColors.grey600),
                   ),
                   const SizedBox(height: 4),
                   Text(

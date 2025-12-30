@@ -53,7 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   subscription: _subscription!,
                   onCancel: _handleClearSubscription,
                 ),
-              _buildContent(),
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    WelcomeSection(),
+                    SizedBox(height: 32),
+                    SubscriptionList(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -70,15 +80,5 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     }
-  }
-
-  Widget _buildContent() {
-    return const Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [WelcomeSection(), SizedBox(height: 32), SubscriptionList()],
-      ),
-    );
   }
 }
