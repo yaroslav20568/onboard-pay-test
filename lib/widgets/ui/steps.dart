@@ -1,9 +1,9 @@
 import 'package:app/constants/colors_const.dart';
-import 'package:app/widgets/app_button.dart';
+import 'package:app/widgets/ui/button.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingStepData {
-  const OnboardingStepData({
+class StepData {
+  const StepData({
     required this.title,
     required this.description,
     required this.icon,
@@ -13,21 +13,17 @@ class OnboardingStepData {
   final IconData icon;
 }
 
-class OnboardingSteps extends StatefulWidget {
-  const OnboardingSteps({
-    required this.steps,
-    required this.onComplete,
-    super.key,
-  });
+class Steps extends StatefulWidget {
+  const Steps({required this.steps, required this.onComplete, super.key});
 
-  final List<OnboardingStepData> steps;
+  final List<StepData> steps;
   final VoidCallback onComplete;
 
   @override
-  State<OnboardingSteps> createState() => _OnboardingStepsState();
+  State<Steps> createState() => _StepsState();
 }
 
-class _OnboardingStepsState extends State<OnboardingSteps> {
+class _StepsState extends State<Steps> {
   int _currentStep = 0;
 
   void _nextStep() {
@@ -83,9 +79,9 @@ class _OnboardingStepsState extends State<OnboardingSteps> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if (!isFirstStep)
-                AppButton(
+                Button(
                   onPressed: _previousStep,
-                  variant: AppButtonVariant.outline,
+                  variant: ButtonVariant.outline,
                   child: const Text('Предыдущий'),
                 )
               else
@@ -108,9 +104,9 @@ class _OnboardingStepsState extends State<OnboardingSteps> {
                   ),
                 ),
               ),
-              AppButton(
+              Button(
                 onPressed: _nextStep,
-                variant: AppButtonVariant.primary,
+                variant: ButtonVariant.primary,
                 child: const Text('Продолжить'),
               ),
             ],
