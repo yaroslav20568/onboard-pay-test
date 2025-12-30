@@ -1,0 +1,32 @@
+{
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit"
+	},
+	"[dart]": {
+		"editor.defaultFormatter": "Dart-Code.dart-code",
+		"editor.formatOnSave": true,
+		"editor.selectionHighlight": false,
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"editor.suggestSelection": "first",
+		"editor.tabCompletion": "onlySnippets",
+		"editor.wordBasedSuggestions": "off"
+	},
+	"[yaml]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"dart.lineLength": 80,
+	"dart.enableSdkFormatter": true,
+	"dart.analysisExcludedFolders": ["build", "**/generated"],
+	"files.exclude": {
+		"**/.dart_tool": true,
+		"**/.flutter-plugins": true,
+		"**/.flutter-plugins-dependencies": true,
+		"**/.packages": true,
+		"**/.pub-cache": true,
+		"**/.pub": true,
+		"**/build": true
+	}
+}
