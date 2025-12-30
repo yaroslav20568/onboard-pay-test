@@ -8,6 +8,7 @@ class StepData {
     required this.description,
     required this.icon,
   });
+
   final String title;
   final String description;
   final IconData icon;
