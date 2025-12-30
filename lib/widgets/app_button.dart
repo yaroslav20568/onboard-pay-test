@@ -49,9 +49,9 @@ class AppButton extends StatelessWidget {
   Color _getDisabledBackgroundColor(BuildContext context) {
     switch (variant) {
       case AppButtonVariant.primary:
-        return AppColors.primary.withOpacity(AppColors.disabledOpacity);
+        return AppColors.primary.withValues(alpha: AppColors.disabledOpacity);
       case AppButtonVariant.secondary:
-        return AppColors.secondary.withOpacity(AppColors.disabledOpacity);
+        return AppColors.secondary.withValues(alpha: AppColors.disabledOpacity);
       case AppButtonVariant.outline:
         return AppColors.transparent;
     }
@@ -61,9 +61,9 @@ class AppButton extends StatelessWidget {
     switch (variant) {
       case AppButtonVariant.primary:
       case AppButtonVariant.secondary:
-        return AppColors.white.withOpacity(AppColors.disabledOpacity);
+        return AppColors.white.withValues(alpha: AppColors.disabledOpacity);
       case AppButtonVariant.outline:
-        return AppColors.primary.withOpacity(AppColors.disabledOpacity);
+        return AppColors.primary.withValues(alpha: AppColors.disabledOpacity);
     }
   }
 
@@ -84,7 +84,7 @@ class AppButton extends StatelessWidget {
           foregroundColor: foregroundColor,
           side: BorderSide(
             color: onPressed == null
-                ? borderColor?.withOpacity(AppColors.disabledOpacity) ??
+                ? borderColor?.withValues(alpha: AppColors.disabledOpacity) ??
                       AppColors.transparent
                 : borderColor ?? AppColors.transparent,
             width: 2,
