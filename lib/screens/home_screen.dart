@@ -4,9 +4,9 @@ import 'package:app/constants/subscription_const.dart';
 import 'package:app/models/subscription.dart';
 import 'package:app/screens/paywall_screen.dart';
 import 'package:app/services/subscription_service.dart';
-import 'package:app/widgets/active_subscription_card.dart';
-import 'package:app/widgets/subscription_list.dart';
-import 'package:app/widgets/welcome_section.dart';
+import 'package:app/widgets/home/active_subscription_card.dart';
+import 'package:app/widgets/home/subscription_list.dart';
+import 'package:app/widgets/home/welcome_section.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
