@@ -51,34 +51,34 @@ class _StepsState extends State<Steps> {
     final isFirstStep = _currentStep == 0;
 
     return Padding(
-      padding: const EdgeInsets.all(24.0),
+      padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 24.0),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: FadeInAnimation(
-              key: ValueKey<int>(_currentStep),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(step.icon, size: 120, color: AppColors.primary),
-                  const SizedBox(height: 32),
-                  Text(
-                    step.title,
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
+          FadeInAnimation(
+            key: ValueKey<int>(_currentStep),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(step.icon, size: 120, color: AppColors.primary),
+                const SizedBox(height: 32),
+                Text(
+                  step.title,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(height: 16),
-                  Text(
-                    step.description,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  step.description,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
+          const SizedBox(height: 32),
           Row(
             children: [
               Expanded(

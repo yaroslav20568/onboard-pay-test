@@ -50,47 +50,57 @@ class _PaywallScreenState extends State<PaywallScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              const FadeInAnimation(child: PaywallHeader()),
-              Expanded(
-                child: Column(
-                  children: _subscriptions.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final subscription = entry.value;
-                    return FadeInAnimation(
-                      delay: Duration(milliseconds: 200 + (index * 150)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: SubscriptionCard(
-                          subscription: subscription,
-                          isSelected:
-                              _selectedSubscription == subscription.type,
-                          onTap: () {
-                            setState(() {
-                              _selectedSubscription = subscription.type;
-                            });
-                          },
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24.0,
+                    vertical: ScreenSpacing.vertical,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const FadeInAnimation(child: PaywallHeader()),
+                      ..._subscriptions.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final subscription = entry.value;
+                        return FadeInAnimation(
+                          delay: Duration(milliseconds: 200 + (index * 150)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: SubscriptionCard(
+                              subscription: subscription,
+                              isSelected:
+                                  _selectedSubscription == subscription.type,
+                              onTap: () {
+                                setState(() {
+                                  _selectedSubscription = subscription.type;
+                                });
+                              },
+                            ),
+                          ),
+                        );
+                      }),
+                      const SizedBox(height: 16),
+                      FadeInAnimation(
+                        delay: const Duration(milliseconds: 500),
+                        child: Button(
+                          onPressed: _selectedSubscription != null
+                              ? _handlePurchase
+                              : null,
+                          variant: ButtonVariant.primary,
+                          child: const Text('Продолжить'),
                         ),
                       ),
-                    );
-                  }).toList(),
+                    ],
+                  ),
                 ),
               ),
-              FadeInAnimation(
-                delay: const Duration(milliseconds: 500),
-                child: Button(
-                  onPressed: _selectedSubscription != null
-                      ? _handlePurchase
-                      : null,
-                  variant: ButtonVariant.primary,
-                  child: const Text('Продолжить'),
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:app/constants/index.dart';
 import 'package:app/screens/index.dart';
 import 'package:app/widgets/ui/index.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +33,27 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: FadeInAnimation(
-          child: Steps(
-            steps: _steps,
-            onComplete: () => _handleComplete(context),
-          ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: ScreenSpacing.vertical,
+                  ),
+                  child: Center(
+                    child: FadeInAnimation(
+                      child: Steps(
+                        steps: _steps,
+                        onComplete: () => _handleComplete(context),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

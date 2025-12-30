@@ -44,35 +44,50 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: FadeInAnimation(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                if (_subscription != null)
-                  FadeInAnimation(
-                    delay: const Duration(milliseconds: 200),
-                    child: ActiveSubscriptionCard(
-                      subscription: _subscription!,
-                      onCancel: _handleClearSubscription,
-                    ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: ScreenSpacing.vertical,
                   ),
-                const FadeInAnimation(
-                  delay: Duration(milliseconds: 100),
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        WelcomeSection(),
-                        SizedBox(height: 32),
-                        SubscriptionList(),
-                      ],
+                  child: Center(
+                    child: FadeInAnimation(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (_subscription != null)
+                            FadeInAnimation(
+                              delay: const Duration(milliseconds: 200),
+                              child: ActiveSubscriptionCard(
+                                subscription: _subscription!,
+                                onCancel: _handleClearSubscription,
+                              ),
+                            ),
+                          const FadeInAnimation(
+                            delay: Duration(milliseconds: 100),
+                            child: Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  WelcomeSection(),
+                                  SizedBox(height: 32),
+                                  SubscriptionList(),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

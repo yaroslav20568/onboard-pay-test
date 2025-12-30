@@ -7,7 +7,6 @@ class PaywallHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 32),
         Text(
           'Выберите подписку',
           style: Theme.of(
