@@ -17,9 +17,9 @@ class SubscriptionCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
+        color: AppColors.grey50,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade200),
+        border: Border.all(color: AppColors.grey200),
       ),
       child: Row(
         children: [
@@ -47,7 +47,7 @@ class SubscriptionCard extends StatelessWidget {
                   description,
                   style: Theme.of(
                     context,
-                  ).textTheme.bodyMedium?.copyWith(color: Colors.grey.shade600),
+                  ).textTheme.bodyMedium?.copyWith(color: AppColors.grey600),
                 ),
               ],
             ),
