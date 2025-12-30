@@ -1,68 +1,68 @@
 import 'package:app/constants/colors_const.dart';
 import 'package:flutter/material.dart';
 
-enum AppButtonVariant { primary, secondary, outline }
+enum ButtonVariant { primary, secondary, outline }
 
-class AppButton extends StatelessWidget {
-  const AppButton({
+class Button extends StatelessWidget {
+  const Button({
     required this.onPressed,
     required this.child,
-    this.variant = AppButtonVariant.primary,
+    this.variant = ButtonVariant.primary,
     super.key,
   });
 
   final VoidCallback? onPressed;
   final Widget child;
-  final AppButtonVariant variant;
+  final ButtonVariant variant;
 
   Color _getBackgroundColor(BuildContext context) {
     switch (variant) {
-      case AppButtonVariant.primary:
+      case ButtonVariant.primary:
         return AppColors.primary;
-      case AppButtonVariant.secondary:
+      case ButtonVariant.secondary:
         return AppColors.secondary;
-      case AppButtonVariant.outline:
+      case ButtonVariant.outline:
         return AppColors.transparent;
     }
   }
 
   Color _getForegroundColor(BuildContext context) {
     switch (variant) {
-      case AppButtonVariant.primary:
-      case AppButtonVariant.secondary:
+      case ButtonVariant.primary:
+      case ButtonVariant.secondary:
         return AppColors.white;
-      case AppButtonVariant.outline:
+      case ButtonVariant.outline:
         return AppColors.primary;
     }
   }
 
   Color? _getBorderColor(BuildContext context) {
     switch (variant) {
-      case AppButtonVariant.primary:
-      case AppButtonVariant.secondary:
+      case ButtonVariant.primary:
+      case ButtonVariant.secondary:
         return null;
-      case AppButtonVariant.outline:
+      case ButtonVariant.outline:
         return AppColors.primary;
     }
   }
 
   Color _getDisabledBackgroundColor(BuildContext context) {
     switch (variant) {
-      case AppButtonVariant.primary:
+      case ButtonVariant.primary:
         return AppColors.primary.withValues(alpha: AppColors.disabledOpacity);
-      case AppButtonVariant.secondary:
+      case ButtonVariant.secondary:
         return AppColors.secondary.withValues(alpha: AppColors.disabledOpacity);
-      case AppButtonVariant.outline:
+      case ButtonVariant.outline:
         return AppColors.transparent;
     }
   }
 
   Color _getDisabledForegroundColor(BuildContext context) {
     switch (variant) {
-      case AppButtonVariant.primary:
-      case AppButtonVariant.secondary:
+      case ButtonVariant.primary:
+      case ButtonVariant.secondary:
         return AppColors.white.withValues(alpha: AppColors.disabledOpacity);
-      case AppButtonVariant.outline:
+      case ButtonVariant.outline:
         return AppColors.primary.withValues(alpha: AppColors.disabledOpacity);
     }
   }
@@ -77,7 +77,7 @@ class AppButton extends StatelessWidget {
         : _getForegroundColor(context);
     final borderColor = _getBorderColor(context);
 
-    if (variant == AppButtonVariant.outline) {
+    if (variant == ButtonVariant.outline) {
       return OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(

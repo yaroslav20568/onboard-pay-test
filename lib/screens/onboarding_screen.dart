@@ -1,19 +1,19 @@
 import 'package:app/screens/paywall_screen.dart';
-import 'package:app/widgets/onboarding_steps.dart';
+import 'package:app/widgets/ui/steps.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
-  static const List<OnboardingStepData> _steps = [
-    OnboardingStepData(
+  static const List<StepData> _steps = [
+    StepData(
       title: 'Добро пожаловать!',
       description:
           'Откройте для себя все возможности нашего приложения. '
           'Получите доступ к премиум функциям.',
       icon: Icons.waving_hand,
     ),
-    OnboardingStepData(
+    StepData(
       title: 'Начните использовать',
       description:
           'Выберите подписку и получите полный доступ '
@@ -32,10 +32,7 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: OnboardingSteps(
-          steps: _steps,
-          onComplete: () => _handleComplete(context),
-        ),
+        child: Steps(steps: _steps, onComplete: () => _handleComplete(context)),
       ),
     );
   }

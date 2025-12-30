@@ -1,6 +1,6 @@
 import 'package:app/constants/colors_const.dart';
 import 'package:app/models/subscription.dart';
-import 'package:app/widgets/app_button.dart';
+import 'package:app/widgets/ui/button.dart';
 import 'package:flutter/material.dart';
 
 class ActiveSubscriptionCard extends StatelessWidget {
@@ -101,9 +101,9 @@ class ActiveSubscriptionCard extends StatelessWidget {
             ),
           ],
           const SizedBox(height: 16),
-          AppButton(
+          Button(
             onPressed: onCancel,
-            variant: AppButtonVariant.outline,
+            variant: ButtonVariant.outline,
             child: const Text('Отменить подписку'),
           ),
         ],

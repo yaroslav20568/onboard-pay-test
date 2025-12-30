@@ -5,7 +5,7 @@ import 'package:app/constants/subscription_const.dart';
 import 'package:app/models/subscription.dart';
 import 'package:app/screens/home_screen.dart';
 import 'package:app/services/subscription_service.dart';
-import 'package:app/widgets/app_button.dart';
+import 'package:app/widgets/ui/button.dart';
 import 'package:flutter/material.dart';
 
 class PaywallScreen extends StatefulWidget {
@@ -167,11 +167,11 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   }).toList(),
                 ),
               ),
-              AppButton(
+              Button(
                 onPressed: _selectedSubscription != null
                     ? _handlePurchase
                     : null,
-                variant: AppButtonVariant.primary,
+                variant: ButtonVariant.primary,
                 child: const Text('Продолжить'),
               ),
             ],
