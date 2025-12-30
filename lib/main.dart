@@ -1,7 +1,6 @@
-import 'package:app/constants/colors_const.dart';
-import 'package:app/screens/home_screen.dart';
-import 'package:app/screens/onboarding_screen.dart';
-import 'package:app/services/subscription_service.dart';
+import 'package:app/constants/index.dart';
+import 'package:app/screens/index.dart';
+import 'package:app/services/index.dart';
 import 'package:flutter/material.dart';
 
 void main() {

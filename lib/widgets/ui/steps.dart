@@ -1,5 +1,5 @@
-import 'package:app/constants/colors_const.dart';
-import 'package:app/widgets/ui/button.dart';
+import 'package:app/constants/index.dart';
+import 'package:app/widgets/ui/index.dart';
 import 'package:flutter/material.dart';
 
 class StepData {

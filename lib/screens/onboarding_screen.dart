@@ -1,5 +1,5 @@
-import 'package:app/screens/paywall_screen.dart';
-import 'package:app/widgets/ui/steps.dart';
+import 'package:app/screens/index.dart';
+import 'package:app/widgets/ui/index.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {

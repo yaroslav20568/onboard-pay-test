@@ -1,4 +1,4 @@
-import 'package:app/models/subscription.dart';
+import 'package:app/models/index.dart';
 
 class SubscriptionConstants {
   static const String monthPrice = '299 ₽';

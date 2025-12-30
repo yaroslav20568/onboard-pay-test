@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:app/constants/subscription_const.dart';
-import 'package:app/models/subscription.dart';
-import 'package:app/screens/paywall_screen.dart';
-import 'package:app/services/subscription_service.dart';
-import 'package:app/widgets/home/active_subscription_card.dart';
-import 'package:app/widgets/home/subscription_list.dart';
-import 'package:app/widgets/home/welcome_section.dart';
+import 'package:app/constants/index.dart';
+import 'package:app/models/index.dart';
+import 'package:app/screens/index.dart';
+import 'package:app/services/index.dart';
+import 'package:app/widgets/home/index.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {

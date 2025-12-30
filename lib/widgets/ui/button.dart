@@ -1,4 +1,4 @@
-import 'package:app/constants/colors_const.dart';
+import 'package:app/constants/index.dart';
 import 'package:flutter/material.dart';
 
 enum ButtonVariant { primary, secondary, outline }
