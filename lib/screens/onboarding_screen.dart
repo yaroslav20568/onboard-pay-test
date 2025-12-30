@@ -32,7 +32,12 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Steps(steps: _steps, onComplete: () => _handleComplete(context)),
+        child: FadeInAnimation(
+          child: Steps(
+            steps: _steps,
+            onComplete: () => _handleComplete(context),
+          ),
+        ),
       ),
     );
   }

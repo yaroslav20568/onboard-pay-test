@@ -54,35 +54,41 @@ class _StepsState extends State<Steps> {
       child: Column(
         children: [
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(step.icon, size: 120, color: AppColors.primary),
-                const SizedBox(height: 32),
-                Text(
-                  step.title,
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+            child: FadeInAnimation(
+              key: ValueKey<int>(_currentStep),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(step.icon, size: 120, color: AppColors.primary),
+                  const SizedBox(height: 32),
+                  Text(
+                    step.title,
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  step.description,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  textAlign: TextAlign.center,
-                ),
-              ],
+                  const SizedBox(height: 16),
+                  Text(
+                    step.description,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if (!isFirstStep)
-                Button(
-                  onPressed: _previousStep,
-                  variant: ButtonVariant.outline,
-                  child: const Text('Предыдущий'),
+                FadeInAnimation(
+                  delay: const Duration(milliseconds: 100),
+                  child: Button(
+                    onPressed: _previousStep,
+                    variant: ButtonVariant.outline,
+                    child: const Text('Предыдущий'),
+                  ),
                 )
               else
                 const SizedBox.shrink(),
@@ -104,10 +110,13 @@ class _StepsState extends State<Steps> {
                   ),
                 ),
               ),
-              Button(
-                onPressed: _nextStep,
-                variant: ButtonVariant.primary,
-                child: const Text('Продолжить'),
+              FadeInAnimation(
+                delay: const Duration(milliseconds: 100),
+                child: Button(
+                  onPressed: _nextStep,
+                  variant: ButtonVariant.primary,
+                  child: const Text('Продолжить'),
+                ),
               ),
             ],
           ),
