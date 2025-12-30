@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:app/constants/colors.dart';
+import 'package:app/constants/colors_const.dart';
+import 'package:app/constants/subscription_const.dart';
 import 'package:app/models/subscription.dart';
 import 'package:app/screens/home_screen.dart';
 import 'package:app/services/subscription_service.dart';
@@ -17,9 +18,17 @@ class PaywallScreen extends StatefulWidget {
 class _PaywallScreenState extends State<PaywallScreen> {
   SubscriptionType? _selectedSubscription;
 
-  final List<Subscription> _subscriptions = const [
-    Subscription(type: SubscriptionType.month, price: '299 ₽', discount: 0),
-    Subscription(type: SubscriptionType.year, price: '1999 ₽', discount: 44),
+  static const List<Subscription> _subscriptions = [
+    Subscription(
+      type: SubscriptionType.month,
+      price: SubscriptionConstants.monthPrice,
+      discount: 0,
+    ),
+    Subscription(
+      type: SubscriptionType.year,
+      price: SubscriptionConstants.yearPrice,
+      discount: SubscriptionConstants.yearDiscount,
+    ),
   ];
 
   Future<void> _handlePurchase() async {

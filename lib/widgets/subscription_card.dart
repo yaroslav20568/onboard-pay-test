@@ -1,4 +1,4 @@
-import 'package:app/constants/colors.dart';
+import 'package:app/constants/colors_const.dart';
 import 'package:flutter/material.dart';
 
 class SubscriptionCard extends StatelessWidget {
