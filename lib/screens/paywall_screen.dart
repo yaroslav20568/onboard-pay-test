@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:app/constants/colors.dart';
 import 'package:app/models/subscription.dart';
+import 'package:app/screens/home_screen.dart';
 import 'package:app/services/subscription_service.dart';
 import 'package:app/widgets/app_button.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +26,13 @@ class _PaywallScreenState extends State<PaywallScreen> {
     if (_selectedSubscription == null) return;
 
     await SubscriptionService.setSubscription(true);
+    await SubscriptionService.setSubscriptionType(_selectedSubscription!);
     if (mounted) {
-      Navigator.of(context).pop(true);
+      unawaited(
+        Navigator.of(context).pushReplacement<void, void>(
+          MaterialPageRoute<void>(builder: (context) => const HomeScreen()),
+        ),
+      );
     }
   }
 
