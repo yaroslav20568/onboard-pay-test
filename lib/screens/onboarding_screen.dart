@@ -4,8 +4,34 @@ import 'package:flutter/material.dart';
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
+  static const List<OnboardingStepData> _steps = [
+    OnboardingStepData(
+      title: 'Добро пожаловать!',
+      description:
+          'Откройте для себя все возможности нашего приложения. Получите доступ к премиум функциям.',
+      icon: Icons.waving_hand,
+    ),
+    OnboardingStepData(
+      title: 'Начните использовать',
+      description:
+          'Выберите подписку и получите полный доступ ко всем функциям приложения.',
+      icon: Icons.rocket_launch,
+    ),
+  ];
+
+  void _handleComplete(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: SafeArea(child: OnboardingSteps()));
+    return Scaffold(
+      body: SafeArea(
+        child: OnboardingSteps(
+          steps: _steps,
+          onComplete: () => _handleComplete(context),
+        ),
+      ),
+    );
   }
 }
