@@ -5,6 +5,7 @@ import 'package:app/models/index.dart';
 import 'package:app/screens/index.dart';
 import 'package:app/services/index.dart';
 import 'package:app/widgets/home/index.dart';
+import 'package:app/widgets/ui/index.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -43,26 +44,34 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              if (_subscription != null)
-                ActiveSubscriptionCard(
-                  subscription: _subscription!,
-                  onCancel: _handleClearSubscription,
+        child: FadeInAnimation(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                if (_subscription != null)
+                  FadeInAnimation(
+                    delay: const Duration(milliseconds: 200),
+                    child: ActiveSubscriptionCard(
+                      subscription: _subscription!,
+                      onCancel: _handleClearSubscription,
+                    ),
+                  ),
+                const FadeInAnimation(
+                  delay: Duration(milliseconds: 100),
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        WelcomeSection(),
+                        SizedBox(height: 32),
+                        SubscriptionList(),
+                      ],
+                    ),
+                  ),
                 ),
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    WelcomeSection(),
-                    SizedBox(height: 32),
-                    SubscriptionList(),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

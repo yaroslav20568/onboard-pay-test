@@ -54,31 +54,40 @@ class _PaywallScreenState extends State<PaywallScreen> {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              const PaywallHeader(),
+              const FadeInAnimation(child: PaywallHeader()),
               Expanded(
                 child: Column(
-                  children: _subscriptions.map((subscription) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: SubscriptionCard(
-                        subscription: subscription,
-                        isSelected: _selectedSubscription == subscription.type,
-                        onTap: () {
-                          setState(() {
-                            _selectedSubscription = subscription.type;
-                          });
-                        },
+                  children: _subscriptions.asMap().entries.map((entry) {
+                    final index = entry.key;
+                    final subscription = entry.value;
+                    return FadeInAnimation(
+                      delay: Duration(milliseconds: 200 + (index * 150)),
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: SubscriptionCard(
+                          subscription: subscription,
+                          isSelected:
+                              _selectedSubscription == subscription.type,
+                          onTap: () {
+                            setState(() {
+                              _selectedSubscription = subscription.type;
+                            });
+                          },
+                        ),
                       ),
                     );
                   }).toList(),
                 ),
               ),
-              Button(
-                onPressed: _selectedSubscription != null
-                    ? _handlePurchase
-                    : null,
-                variant: ButtonVariant.primary,
-                child: const Text('Продолжить'),
+              FadeInAnimation(
+                delay: const Duration(milliseconds: 500),
+                child: Button(
+                  onPressed: _selectedSubscription != null
+                      ? _handlePurchase
+                      : null,
+                  variant: ButtonVariant.primary,
+                  child: const Text('Продолжить'),
+                ),
               ),
             ],
           ),
