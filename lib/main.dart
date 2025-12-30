@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const InitialScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -37,11 +38,13 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   void initState() {
     super.initState();
+
     _checkSubscription();
   }
 
   Future<void> _checkSubscription() async {
     final hasSubscription = await SubscriptionService.hasSubscription();
+
     if (mounted) {
       setState(() {
         _hasSubscription = hasSubscription;
